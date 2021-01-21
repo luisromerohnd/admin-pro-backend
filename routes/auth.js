@@ -1,10 +1,18 @@
 /*
     Path: '/api/login'
 */
-const { Router } = require('express');
-const { login } = require('../controllers/auth');
-const { check } = require('express-validator');
-const { validarCampos } = require('../middlewares/validar-campos');
+const {
+    Router
+} = require('express');
+const {
+    login
+} = require('../controllers/auth');
+const {
+    check
+} = require('express-validator');
+const {
+    validarCampos
+} = require('../middlewares/validar-campos');
 
 const router = Router();
 
