@@ -5,7 +5,8 @@ const {
     Router
 } = require('express');
 const {
-    login
+    login,
+    googleSignIn
 } = require('../controllers/auth');
 const {
     check
@@ -23,6 +24,14 @@ router.post('/',
         validarCampos
     ],
     login
-)
+);
+
+router.post('/google',
+    [
+        check('token', 'El token de Google es obligatorio').not().isEmpty(),
+        validarCampos
+    ],
+    googleSignIn
+);
 
 module.exports = router;
