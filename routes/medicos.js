@@ -2,6 +2,8 @@
     Medicos
     ruta: '/api/medico'
 */
+
+/* ---------------------------------------------- */
 const {
     Router
 } = require('express');
@@ -27,6 +29,7 @@ const {
 
 const router = Router();
 
+/* ---------------------------------------------- */
 router.get('/', getMedicos);
 
 router.post('/',
@@ -40,7 +43,12 @@ router.post('/',
 );
 
 router.put('/:id',
-    [],
+    [
+        validarJWT,
+        check('nombre', 'El nombre del medico es necesario').not().isEmpty(),
+        check('hospital', 'El hospital id debe ser valido').isMongoId(),
+        validarCampos
+    ],
     actualizarMedico
 );
 
@@ -48,4 +56,5 @@ router.delete('/:id',
     borrarMedico
 );
 
+/* ---------------------------------------------- */
 module.exports = router;
